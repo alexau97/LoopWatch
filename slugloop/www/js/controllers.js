@@ -37,9 +37,7 @@ angular.module('app.controllers', [])
 
                }
                bus_16 = BusService.get_bus_16();
-               for(var test = 0; test < bus_16.length; test++){
-               	console.log(bus_16[test]);
-               }
+               console.log(bus_16);
                
                	
                
@@ -79,13 +77,12 @@ angular.module('app.controllers', [])
                 bus_row.push(replaced.replace(/<(?:.|\n)*?>/gm, '').replace(/ /g,'').replace("↵",""));
                 //console.log(string[i].innerHTML.trim());
                }
-                 bus_10.push(bus_row)
+                 //bus_16.push(bus_row)
+                 BusService.set_bus_10(bus_row);
 
                }
-
-               for(var test = 0; test < bus_10.length; test++){
-                console.log(bus_10[test]);
-               }
+               bus_10 = BusService.get_bus_10();
+               console.log(bus_10);
                
                 
                
@@ -99,6 +96,7 @@ angular.module('app.controllers', [])
             .error(function() {
                 defer.reject('could not find someFile.json');
             });
+
   $http.get("https://crossorigin.me/http://www.scmtd.com/en/routes/system-map/systemschedule/15/20161")
             .success(function(data) {
                //console.log(data);
@@ -124,21 +122,26 @@ angular.module('app.controllers', [])
                 bus_row.push(replaced.replace(/<(?:.|\n)*?>/gm, '').replace(/ /g,'').replace("↵",""));
                 //console.log(string[i].innerHTML.trim());
                }
-                 bus_15.push(bus_row)
+                 //bus_16.push(bus_row)
+                 BusService.set_bus_15(bus_row);
 
                }
-
-               for(var test = 0; test < bus_15.length; test++){
-                console.log(bus_15[test]);
-               }
+               bus_15 = BusService.get_bus_15();
+               console.log(bus_15);
                
                 
                
-         
+               
+
+
+               
+                
+                
             })
             .error(function() {
                 defer.reject('could not find someFile.json');
             });
+
 $http.get("https://crossorigin.me/http://www.scmtd.com/en/routes/system-map/systemschedule/19/20161")
             .success(function(data) {
                //console.log(data);
@@ -164,23 +167,28 @@ $http.get("https://crossorigin.me/http://www.scmtd.com/en/routes/system-map/syst
                 bus_row.push(replaced.replace(/<(?:.|\n)*?>/gm, '').replace(/ /g,'').replace("↵",""));
                 //console.log(string[i].innerHTML.trim());
                }
-                 bus_19.push(bus_row)
+                 //bus_16.push(bus_row)
+                 BusService.set_bus_19(bus_row);
 
                }
-
-               for(var test = 0; test < bus_19.length; test++){
-                console.log(bus_19[test]);
-               }
+               bus_19 = BusService.get_bus_19();
+               console.log(bus_19);
                
                 
                
-         
+               
+
+
+               
+                
+                
             })
             .error(function() {
                 defer.reject('could not find someFile.json');
             });
+
 $http.get("https://crossorigin.me/http://www.scmtd.com/en/routes/system-map/systemschedule/20/20161")
-            .success(function(data) {
+.success(function(data) {
                //console.log(data);
                var tmp = document.implementation.createHTMLDocument();
                tmp.body.innerHTML = data;
@@ -204,21 +212,26 @@ $http.get("https://crossorigin.me/http://www.scmtd.com/en/routes/system-map/syst
                 bus_row.push(replaced.replace(/<(?:.|\n)*?>/gm, '').replace(/ /g,'').replace("↵",""));
                 //console.log(string[i].innerHTML.trim());
                }
-                 bus_20.push(bus_row)
+                 //bus_16.push(bus_row)
+                 BusService.set_bus_20(bus_row);
 
                }
-
-               for(var test = 0; test < bus_20.length; test++){
-                console.log(bus_20[test]);
-               }
+               bus_20 = BusService.get_bus_20();
+               console.log(bus_20);
                
                 
                
-         
+               
+
+
+               
+                
+                
             })
             .error(function() {
                 defer.reject('could not find someFile.json');
             });
+
 })
    
 
