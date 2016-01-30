@@ -1,0 +1,31 @@
+<template name="searchUsers">
+    <div class="row col-sm-12">
+        <form id="search-users" class="col-sm-12" role="search">
+            <div class="form-group">
+                <label for="search-term">Search Term:</label>
+                <input id="search-term" type="text" class="form-control" placeholder="Search Twitter Users...">
+            </div>
+            <div class="form-group">
+                <label for="page">Start Page:</label>
+                <select id="page" class="form-control">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="count">Items to Return</label>
+                <select id="count" class="form-control">
+                    <option value="5<">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    {{> userLoop}}
+</template>

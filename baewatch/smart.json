@@ -1,0 +1,12 @@
+{
+  "packages": {
+    "streams": {},
+    "semantic-ui": {},
+    "momentjs": {},
+    "twitter-api": {},
+    "bootstrap-3": {},
+    "iron-router": {},
+    "GAnalytics": {},
+    "apm": {}
+  }
+}
