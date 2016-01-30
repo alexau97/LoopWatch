@@ -1,0 +1,14 @@
+{
+  "name": "HelloIonic",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.2.4"
+  },
+  "dependencies": {
+    "ng-twitter-api": "^0.1.5",
+    "ngCordova": "master"
+  },
+  "resolutions": {
+    "ngCordova": "c3634c64090fa11c3e6bab3fcdc29712d3ecb965"
+  }
+}
