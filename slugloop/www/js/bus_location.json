@@ -1,0 +1,51 @@
+parseResponse({
+  "count" : 4,
+  "markers" :
+  [
+    {
+      "latitude" : 36.97819333,
+      "longitude" : -122.05397333,
+      "timestamp" : 1454136061,
+      "route" : "LOOP",
+      "id" : 7860,
+      "direction" : "outer",
+      "predictions" : "13,,,12,,,11,10,9,,8,7,,6,,5,,,4,,3,2,,1,0,,15,14,,,,,,,,,,,,,,,",
+      "update_seconds" : 10,
+      "index" : 6
+    },
+    {
+      "latitude" : 36.99867,
+      "longitude" : -122.05509667,
+      "timestamp" : 1454136062,
+      "route" : "LOOP",
+      "id" : 7926,
+      "direction" : "inner",
+      "predictions" : ",12,13,,13,15,,,,0,,,2,,2,,3,5,,4,,,7,,,8,,,10,,,,,,,,,,,,,,",
+      "update_seconds" : 10,
+      "index" : 6
+    },
+    {
+      "latitude" : 36.9798,
+      "longitude" : -122.05293,
+      "timestamp" : 1454136061,
+      "route" : "LOOP",
+      "id" : 7935,
+      "direction" : "outer",
+      "predictions" : "8,,,7,,,6,5,4,,3,2,,1,,0,,,15,,14,13,,12,11,,10,9,,,,,,,,,,,,,,,",
+      "update_seconds" : 10,
+      "index" : 6
+    },
+    {
+      "latitude" : 36.98388833,
+      "longitude" : -122.06516333,
+      "timestamp" : 1454136060,
+      "route" : "LOOP",
+      "id" : 7936,
+      "direction" : "inner",
+      "predictions" : ",5,7,,7,9,,,,11,,,12,,13,,14,16,,15,,,0,,,2,,,4,,,,,,,,,,,,,,",
+      "update_seconds" : 10,
+      "index" : 6
+    }
+  ],
+  "curr_time" : 1454136063
+});
