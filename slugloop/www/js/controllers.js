@@ -4,7 +4,7 @@ angular.module('app.controllers', [])
 
 })
    
-.controller('feedCtrl', function($scope, $http) {
+.controller('feedCtrl', function($scope, $http, BusService) {
 
 
   $http.get("https://crossorigin.me/http://www.scmtd.com/en/routes/system-map/systemschedule/16/20161")
@@ -32,10 +32,11 @@ angular.module('app.controllers', [])
                	bus_row.push(replaced.replace(/<(?:.|\n)*?>/gm, '').replace(/ /g,'').replace("↵",""));
                	//console.log(string[i].innerHTML.trim());
                }
-                 bus_16.push(bus_row)
+                 //bus_16.push(bus_row)
+                 BusService.set_bus_16(bus_row);
 
                }
-
+               bus_16 = BusService.get_bus_16();
                for(var test = 0; test < bus_16.length; test++){
                	console.log(bus_16[test]);
                }
