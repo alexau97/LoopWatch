@@ -390,6 +390,7 @@ var myDataPromise = loop_service.getData();
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
     
     var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    
 
     var mapOptions = {
       center: latLng,
@@ -401,12 +402,21 @@ var myDataPromise = loop_service.getData();
 
     //Wait until the map is loaded
     google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+     
+
+      var image = { 
+        url: 'js/OuterBusStop.png',
+      };
+
+      //Outer Science Hill Bus Stop Marker
 
       var marker = new google.maps.Marker({
-          map: $scope.map,
-          animation: google.maps.Animation.DROP,
-          position: latLng
+          position: {lat: 36.999935, lng: -122.062135},
+          map:$scope.map,
+          icon: image
       });      
+
+      
 
       var infoWindow = new google.maps.InfoWindow({
           content: "I am here."
