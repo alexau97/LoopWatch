@@ -31,45 +31,90 @@ angular.module('app.services', [])
 .service('BusService',[function(){
 
   var row_16 = [];
+  var row_16_stops = [];
+
   var row_19 = [];
+  var row_19_stops = [];
+
   var row_10 = [];
+  var row_10_stops = [];
+
   var row_15 = [];
+  var row_15_stops = [];
+
   var row_20 = [];
+  var row_20_stops = [];
+
   return {
     get_bus_16: function() {
             return row_16;
         },
+    get_stops_16: function(){
+    		return row_16_stops;
+    },
      get_bus_19: function(){
      	return row_19;
      },
+     get_stops_19: function(){
+    		return row_19_stops;
+    },
      get_bus_10: function(){
       return row_10;
      },
+     get_stops_10: function(){
+    		return row_10_stops;
+    },
      get_bus_15: function(){
       return row_15;
      },
+     get_stops_15: function(){
+    		return row_15_stops;
+    },
      get_bus_20: function(){
       return row_20;
      },
+     get_stops_20: function(){
+    		return row_20_stops;
+    },
     set_bus_16: function(value){
-    	console.log("Bus 16");
+    	
             row_16.push(value);
     },
+    set_stops_16: function(value){
+    	
+            row_16_stops.push(value);
+    },
     set_bus_19: function (value){
-    	console.log("Bus 19");
+    	
       row_19.push(value);
     },
+     set_stops_19: function(value){
+    	
+            row_19_stops.push(value);
+    },
     set_bus_10: function(value){
-      console.log("Bus 10");
+      
             row_10.push(value);
     },
+     set_stops_10: function(value){
+    	
+            row_10_stops.push(value);
+    },
     set_bus_15: function(value){
-      console.log("Bus 15");
+      
       row_15.push(value);
     },
+     set_stops_15: function(value){
+    	
+            row_15_stops.push(value);
+    },
     set_bus_20: function(value){
-      console.log("Bus 20");
+      
       row_20.push(value);
+    },
+    set_stops_20: function(value){
+    	
+            row_20_stops.push(value);
     }
 
 
