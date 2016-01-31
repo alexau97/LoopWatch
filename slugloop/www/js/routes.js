@@ -46,6 +46,16 @@ angular.module('app.routes', [])
         }
       }
     })
+
+       .state('tabsController.metro_list', {
+      url: '/feed/metro',
+      views: {
+        'tab2': {
+          templateUrl: 'templates/metro_list.html',
+          controller: 'metro_listCtrl'
+        }
+      }
+    })
       
     
       

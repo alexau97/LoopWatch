@@ -6,11 +6,39 @@ angular.module('app.controllers', [])
 
 })
    
-.controller('feedCtrl', function($scope,$state, $http, BusService) {
+.controller('feedCtrl', function($scope,$state, $http, BusService, innerOrOuter, whichMetroBus) {
 	$scope.to_inner_loop = function(){
+    innerOrOuter.set_var(0); // 0 is inner loop
 		console.log("Hello WOrld");
+
 		$state.go('tabsController.feed_list')
 	}
+  $scope.to_outer_loop = function(){
+    innerOrOuter.set_var(1);
+    $state.go('tabsController.feed_list')
+  }
+  $scope.to_bus_15 = function(){
+    whichMetroBus.set_var(0); // 0 is bus 15
+    $state.go('tabsController.metro_list')
+  }
+  $scope.to_bus_16 = function(){
+    whichMetroBus.set_var(1);
+    $state.go('tabsController.metro_list')
+  }
+  $scope.to_bus_10 = function(){
+    whichMetroBus.set_var(2);
+    $state.go('tabsController.metro_list')
+  }
+  $scope.to_bus_19 = function(){
+    whichMetroBus.set_var(3);
+    $state.go('tabsController.metro_list')
+  }
+  $scope.to_bus_20 = function(){
+    whichMetroBus.set_var(4);
+    $state.go('tabsController.metro_list')
+  }
+
+
 
   $http.get("https://crossorigin.me/http://www.scmtd.com/en/routes/system-map/systemschedule/16/20161")
             .success(function(data) {
@@ -238,7 +266,30 @@ angular.module('app.controllers', [])
             });
 
 })
-   .controller('feed_listCtrl', function($scope) {
+   .controller('feed_listCtrl', function($scope, innerOrOuter) {
+    $scope.title = "Bus Schedule -- Inner Loop";
+    if(innerOrOuter.get_var() == 0){
+      console.log("We're in the inner loop");
+      $scope.title = "Bus Schedule -- Inner Loop";
+    }else{
+      $scope.title = "Bus Schedule -- Outer Loop";
+    }
+
+})
+   .controller('metro_listCtrl', function($scope, whichMetroBus) {
+    $scope.title = "Bus Schedule -- Metro Bus 15";
+    if(whichMetroBus.get_var() == 0){
+      
+      $scope.title = "Bus Schedule -- Metro Bus 15";
+    }else if(whichMetroBus.get_var() == 1){
+      $scope.title = "Bus Schedule -- Metro Bus 16";
+    }else if(whichMetroBus.get_var() == 2){
+      $scope.title = "Bus Schedule -- Metro Bus 10";
+    }else if(whichMetroBus.get_var() == 3){
+      $scope.title = "Bus Schedule -- Metro Bus 19";
+    }else{
+      $scope.title = "Bus Schedule -- Metro Bus 20";
+    }
 
 })
 
