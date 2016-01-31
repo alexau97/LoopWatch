@@ -33,6 +33,15 @@ angular.module('app.routes', [])
         }
       }
     })
+    .state('tabsController.feed_list', {
+      url: '/feed/list',
+      views: {
+        'tab2': {
+          templateUrl: 'templates/feed_list.html',
+          controller: 'feedListCtrl'
+        }
+      }
+    })
         
       
     
