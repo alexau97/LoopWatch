@@ -1,0 +1,11 @@
+@font-face{
+	font-family: 'Steiner';
+	src: url('Steinerlight.ttf') format('truetype');
+
+}
+
+@font-face{
+	font-family: 'Jura';
+	src: url('Jura-Regular.ttf') format('truetype');
+
+}
