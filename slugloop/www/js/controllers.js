@@ -9,6 +9,16 @@ angular.module('app.controllers', [])
 	$scope.bus_lng = [];
 	$scope.bus_attr = []; 
 	$scope.bus_cnt = 0;
+	$scope.inner_min = String(0);
+	var inner_id = document.getElementById( "inner_id" );
+	inner_id.innerHTML = " X "
+
+	var outer_id = document.getElementById("outer_id");
+	outer_id.innerHTML = " Y "
+	
+	var in_min = 100;
+	var out_min = 100;
+	$scope.outer_min = String(0);
  var myDataPromise = loop_service.getData();
     myDataPromise.then(function(result) {  // this is only run after $http completes
        $scope.data = result;
@@ -75,44 +85,109 @@ var inner_LL = ["InnerHellerKerrHall",
    	console.log("Currently, the user is at: " + user_tmp);
    	console.log("Complete doing the coordinates...");
    	if($scope.bus_cnt != 0){
+
    	for(var i = 0; i < $scope.bus_lat.length; i++){
    		//this variable is going to hold our location string
+   		console.log("-----------bus index: "+ i + "-----------")
    		var bus_tmp = $scope.get_loca($scope.bus_lat[i],$scope.bus_lng[i])
+
    		var get_index = 0;
-   		if($scope.bus_attr[i].indexOf("inner")!=-1){
 
-console.log(outer_LL)
-   			for(var i = 0; i < outer_LL.length; i++){
-   				console.log(bus_tmp)
 
-   				if(bus_tmp.indexOf(outer_LL[i])!=-1){
-   					console.log("Bus tmp.... + " + bus_tmp);
-   					console.log("outer_LL.... + " + outer_LL[i]);
-   					get_index = i; //we need to capture the index
-   					i = outer_LL.length;
+   	if($scope.bus_attr[i] == "inner"){
+   		console.log("INNER!!!")
+           //GETS THE INDEX
+   			for(var j = 0; j < outer_LL.length; j++){
+   				//console.log(bus_tmp)
+   				if(bus_tmp.indexOf(outer_LL[j])!=-1){
+   					//console.log("Bus tmp.... + " + bus_tmp);
+   					//console.log("outer_LL.... + " + outer_LL[i]);
+   					get_index = j; //we need to capture the index
+   					j = outer_LL.length;
    				}
    			}
+
    			console.log("OUR INDEX IS " + get_index)
 
    			var found = false;
    			var count = 0;
    			while(found == false){
-   				for(var i = get_index; i < outer_LL.length; i++){
-   					if(user_tmp.indexOf(outer_LL[i]!=-1)){
+   			 	for(var k = get_index; k < outer_LL.length; k++){
+   					//console.log(i)
+					//console.log("user_tmp = " + user_tmp)
+					//console.log("outer_LL["+k+"] =" +outer_LL[k])
+   					if(user_tmp == outer_LL[k]){
+   						//console.log("WE FOUND THIS BASTARD");
    						found = true;
+   						k = 100;
+   						
    					}else{
+   						//console.log("Haven't found it")
    						count++;
    					}
+
+   					if(k == outer_LL.length-1 && found!=true){
+   						
+   						k = -1;
+   					}
+
    				}
+   			}
+   			if(count < in_min ){
+   				in_min = count;
+   				inner_id.innerHTML = String(in_min);
+   			}
+   			//console.log("THE BUS IS " + count + "AWAY FROM THIS BITCH")
+   		} 
+
+   		if($scope.bus_attr[i] == "outer"){
+   			console.log("outer!!!")
+           //GETS THE INDEX
+   			for(var j = 0; j < outer_LL.length; j++){
+   				//console.log(bus_tmp)
+   				if(bus_tmp.indexOf(outer_LL[j])!=-1){
+   					//console.log("Bus tmp.... + " + bus_tmp);
+   					//console.log("outer_LL.... + " + outer_LL[i]);
+   					get_index = j; //we need to capture the index
+   					j = outer_LL.length;
+   				}
+   			}
+
+   			console.log("OUR INDEX IS " + get_index)
+
+   			var found = false;
+   			var count = 0;
+   			while(found == false){
+   			 	for(var k = get_index; k >= 0; k--){
+   					//console.log(i)
+					//console.log("user_tmp = " + user_tmp)
+					//console.log("outer_LL["+k+"] =" +outer_LL[k])
+   					if(user_tmp == outer_LL[k]){
+   						//console.log("WE FOUND THIS BASTARD");
+   						found = true;
+   						k = -10;
+   						
+   					}else{
+   						//console.log("Haven't found it")
+   						count++;
+   					}
+
+   					if(k == 0 && found!=true){
+   						
+   						k = outer_LL.length;
+   					}
+
+   				}
+   			}
+   			if(count < out_min){
+   				out_min = count;
+
+outer_id.innerHTML = String(out_min);
    			}
    			console.log("THE BUS IS " + count + "AWAY FROM THIS BITCH")
    		}
 
 
-
-   		else{
-   			console.log($scope.bus_attr[i])
-   		}
 
    	}
   }else{
