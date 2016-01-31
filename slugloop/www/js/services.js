@@ -28,6 +28,26 @@ angular.module('app.services', [])
     return { getData: getData };
 })
 
+.service('location_service',[function(){
+var user_lat = 0;
+var user_lng = 0;
+return{
+	get_lat: function(){
+		return user_lat;
+	},
+	get_lng: function(){
+		return user_lng;
+	},
+	set_lat: function(value){
+		user_lat = value;
+	},
+	set_lng: function(value){
+		user_lng = value;
+	}
+}
+
+}])
+
 .service('innerOrOuter',[function(){
   var inOrOut;
   return {

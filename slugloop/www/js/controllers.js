@@ -2,17 +2,438 @@ angular.module('app.controllers', [])
 
 
   
-.controller('loopCtrl', function($scope,loop_service) {
+.controller('loopCtrl', function($scope,loop_service, $ionicLoading, $cordovaGeolocation, location_service) {
+
 	$scope.data;
-var myDataPromise = loop_service.getData();
+	$scope.bus_lat = [];
+	$scope.bus_lng = [];
+	$scope.bus_attr = []; 
+	$scope.bus_cnt = 0;
+ var myDataPromise = loop_service.getData();
     myDataPromise.then(function(result) {  // this is only run after $http completes
        $scope.data = result;
        console.log("printing results")
-       console.log(result);
+       console.log($scope.data);
+       for(var i = 0; i < $scope.data.markers.length; i++){
+       		var bus_late = $scope.data.markers[i].latitude;
+       		var bus_lnge = $scope.data.markers[i].longitude;
+       		var bus_attre = $scope.data.markers[i].direction;
+       		$scope.bus_cnt = $scope.data.count;
+       		
+       		
+       		$scope.bus_lat.push(bus_late);
+       		$scope.bus_lng.push(bus_lnge);
+       		$scope.bus_attr.push(bus_attre);
+
+
+       		
+      
+
+       }
+       
        
     });
- //  console.log("hi")
-   console.log($scope.data)
+ 
+ 
+   var options = {timeout: 10000, enableHighAccuracy:true}
+   var outer_LL = [ "OuterMcLaughlinScienceHill", 
+  "OuterHellerKresgeCollege", 
+  "OuterMcLaughlinCollegeNineTenHealthCenter", 
+  "OuterMclaughlinCrownCollege", 
+  "OuterHagarBookStoreStevensonCollege", 
+  "OuterHagarFieldHouseEast", 
+  "OuterHagarEastRemote", 
+  "OuterHagarLowerQuarryRoad", 
+  "OuterCoolidgeHagar", 
+  "OuterCoolidgeMainEntrance", 
+  "OuterHighWesternDrive", 
+  "OuterEmpireGradeToscaTerrace", 
+  "OuterEmpireGradeArboretum", 
+  "OuterHellerOakesCollege", 
+  "OuterHellerFamilyStudentHousing", 
+  "OuterHellerCollegeEightPorter"]
+
+var inner_LL = ["InnerHellerKerrHall", 
+  "InnerHellerKresgeCollege", 
+  "InnerMcLaughlinScienceHill",
+  "InnerMcLaughlinCollegeNineTenHealthCenter", 
+  "InnerHagarBookstore", 
+  "InnerHagarEastRemote", 
+  "InnerHagarLowerQuarryRd", 
+  "InnerCoolidgeHagar", 
+  "InnerHighWesternDr", 
+  "InnerHighBarnTheater",
+  "InnerEmpireGradeArboretum", 
+  "InnerHellerOakesCollege", 
+  "InnerHellerCollegeEightPorter" ]
+   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
+
+   	location_service.set_lat(position.coords.latitude);
+   	location_service.set_lng(position.coords.longitude);
+   	console.log("Complete setting the lat/lng...");
+   	var user_tmp = $scope.get_loca(position.coords.latitude,position.coords.longitude);
+   	console.log("Currently, the user is at: " + user_tmp);
+   	console.log("Complete doing the coordinates...");
+   	if($scope.bus_cnt != 0){
+   	for(var i = 0; i < $scope.bus_lat.length; i++){
+   		//this variable is going to hold our location string
+   		var bus_tmp = $scope.get_loca($scope.bus_lat[i],$scope.bus_lng[i])
+   		var get_index = 0;
+   		if($scope.bus_attr[i].indexOf("inner")!=-1){
+
+console.log(outer_LL)
+   			for(var i = 0; i < outer_LL.length; i++){
+   				console.log(bus_tmp)
+
+   				if(bus_tmp.indexOf(outer_LL[i])!=-1){
+   					console.log("Bus tmp.... + " + bus_tmp);
+   					console.log("outer_LL.... + " + outer_LL[i]);
+   					get_index = i; //we need to capture the index
+   					i = outer_LL.length;
+   				}
+   			}
+   			console.log("OUR INDEX IS " + get_index)
+
+   			var found = false;
+   			var count = 0;
+   			while(found == false){
+   				for(var i = get_index; i < outer_LL.length; i++){
+   					if(user_tmp.indexOf(outer_LL[i]!=-1)){
+   						found = true;
+   					}else{
+   						count++;
+   					}
+   				}
+   			}
+   			console.log("THE BUS IS " + count + "AWAY FROM THIS BITCH")
+   		}
+
+
+
+   		else{
+   			console.log($scope.bus_attr[i])
+   		}
+
+   	}
+  }else{
+  	console.log("there are no buses in service ]: ");
+  }
+
+   })
+
+    var distance = [];
+    var min = 1000;
+    var min_index = 0;
+     $scope.get_loca = function(x,y){
+
+
+
+  
+  
+    for (i=0; i<28; i++)
+   {
+
+        //distance calcuation
+        x_val =  Math.pow(x-(bus_stops[i])[0],2 )
+        y_val =  Math.pow(y-(bus_stops[i])[1],2 )
+        sum_val = Math.sqrt(x_val + y_val)
+        
+        distance.push(sum_val);
+        if(sum_val <min){
+          min = sum_val;
+          min_index = i
+        }
+        //console.log(distance[i])
+      
+    }
+    
+   //console.log("The minimum distance is " + min)
+   //console.log("..and the index of where it's at is " + min_index);
+   //console.log("..which is bus stop " + bus_stops[min_index][4]);
+   return bus_stops[min_index][4];
+  }
+
+
+/*
+each array holds in its elements, 4 numbers representing these 4 properties
+lat
+lng
+head
+pitch
+*/
+
+
+var OuterMcLaughlinScienceHill = [
+                    36.999935,
+                    -122.062135,
+                    296.89,
+                    0,
+                    "OuterMcLaughlinScienceHill"
+                ]
+
+var OuterHellerKresgeCollege = [
+                    36.999241,
+                    -122.064452,
+                    270.54,
+                    -10,
+                    "OuterHellerKresgeCollege"
+                ]
+
+var OuterMcLaughlinCollegeNineTenHealthCenter = [
+                    36.999856,
+                    -122.058251,
+                    339.05,
+                    5,
+                    "OuterMcLaughlinCollegeNineTenHealthCenter"
+                ]
+
+var OuterMclaughlinCrownCollege = [
+                    36.998954,
+                    -122.055286,
+                    40.62,
+                    -5,
+                    "OuterMclaughlinCrownCollege"
+                ]
+
+var OuterHagarBookStoreStevensonCollege = [
+                    36.997219,
+                    -122.055263,
+                    57.52,
+                    5,
+                    "OuterHagarBookStoreStevensonCollege"
+                ]
+
+var OuterHagarFieldHouseEast = [
+                    36.994269,
+                    -122.055624,
+                    69.66,
+                    -5,
+                    "OuterHagarFieldHouseEast"
+                ]
+
+var OuterHagarEastRemote = [
+                    36.991304,
+                    -122.054784,
+                    92.8,
+                    -5,
+                    "OuterHagarEastRemote"
+                ]
+ 
+var OuterHagarLowerQuarryRoad = [
+                    36.985984,
+                    -122.053706,
+                    101.89,
+                    0,
+                    "OuterHagarLowerQuarryRoad"
+                ]
+
+var OuterCoolidgeHagar = [
+                    36.981484,
+                    -122.051999,
+                    180.41,
+                    -5,
+                    "OuterCoolidgeHagar"
+                ] 
+
+var OuterCoolidgeMainEntrance = [
+                    36.977468,
+                    -122.053582,
+                    28.03,
+                    -5,
+                    "OuterCoolidgeMainEntrance"
+                ]
+
+var OuterHighWesternDrive = [
+                    36.978694,
+                    -122.057741,
+                    259.02,
+                    -5,
+                    "OuterHighWesternDrive"
+                ]
+
+
+var OuterEmpireGradeToscaTerrace = [
+                    36.97984,
+                    -122.059084,
+                    209.46,
+                    -5,
+                    "OuterEmpireGradeToscaTerrace"
+                ]
+
+var OuterEmpireGradeArboretum = [
+                    36.983755,
+                    -122.064933,
+                    181.41,
+                    0,
+                    "OuterEmpireGradeArboretum"
+                ]
+
+var OuterHellerOakesCollege = [
+                    36.989899,
+                    -122.067078,
+                    282.16,
+                    -5,
+                    "OuterHellerOakesCollege"
+                ]
+
+var OuterHellerFamilyStudentHousing = [
+                    36.991905,
+                    -122.066699,
+                    216.25,
+                    5,
+                    "OuterHellerFamilyStudentHousing"
+                ]
+
+var OuterHellerCollegeEightPorter = [
+                    36.992896,
+                    -122.065127,
+                    349.44,
+                    5,
+                    "OuterHellerCollegeEightPorter"
+                ]
+
+var InnerHellerKerrHall = [
+                    36.996805,
+                    -122.063655,
+                    40.17,
+                    -5,
+                    "InnerHellerKerrHall"
+                ]
+                
+var InnerHellerKresgeCollege = [
+                    36.99911,
+                    -122.064476,
+                    84.33,
+                    -10,
+                    "InnerHellerKresgeCollege"
+                ]
+
+var InnerMcLaughlinScienceHill = [
+                    36.999935,
+                    -122.062135,
+                    142.31,
+                    -10,
+                    "InnerMcLaughlinScienceHill"
+                ]
+
+var InnerMcLaughlinCollegeNineTenHealthCenter = [
+                    36.999845,
+                    -122.05824,
+                    181.55,
+                    -5,
+                    "InnerMcLaughlinCollegeNineTenHealthCenter"
+                ]
+
+var InnerHagarBookstore = [
+                    36.996823,
+                    -122.055366,
+                    212.14,
+                    -10,
+                    "InnerHagarBookstore"
+                ]
+  
+var InnerHagarEastRemote = [
+                    36.991469,
+                    -122.054875,
+                    201.42,
+                    -10,
+                    "InnerHagarEastRemote"
+                ]
+  
+var InnerHagarLowerQuarryRd = [
+                    36.985671,
+                    -122.053489,
+                    203.61,
+                    -5,
+                    "InnerHagarLowerQuarryRd"
+                ]
+
+var InnerCoolidgeHagar = [
+                    36.981457,
+                    -122.052044,
+                    334.96,
+                    5,
+                    "InnerCoolidgeHagar"
+                ]
+
+var InnerHighWesternDr = [
+                    36.978641,
+                    -122.057663,
+                    5.51,
+                    -5,
+                    "InnerHighWesternDr"
+                ]
+
+var InnerHighBarnTheater = [
+                    36.977237,
+                    -122.054173,
+                    321.62,
+                    -5,
+                    "InnerHighBarnTheater"
+                ]
+
+var InnerEmpireGradeArboretum = [
+                    36.982496,
+                    -122.062425,
+                    351.79,
+                    -5,
+                    "InnerEmpireGradeArboretum"
+                ]
+
+var InnerHellerOakesCollege = [
+                    36.99052,
+                    -122.066254,
+                    78.52,
+                    5,
+                    "InnerHellerOakesCollege"
+                ]
+
+var InnerHellerCollegeEightPorter = [
+                    36.992894,
+                    -122.064712,
+                    217.81,
+                    -5,
+                    "InnerHellerCollegeEightPorter"
+                ]
+
+
+var bus_stops = [
+
+  OuterMcLaughlinScienceHill, 
+  OuterHellerKresgeCollege, 
+  OuterMcLaughlinCollegeNineTenHealthCenter, 
+  OuterMclaughlinCrownCollege, 
+  OuterHagarBookStoreStevensonCollege, 
+  OuterHagarFieldHouseEast, 
+  OuterHagarEastRemote, 
+  OuterHagarLowerQuarryRoad, 
+  OuterCoolidgeHagar, 
+  OuterCoolidgeMainEntrance, 
+  OuterHighWesternDrive, 
+  OuterEmpireGradeToscaTerrace, 
+  OuterEmpireGradeArboretum, 
+  OuterHellerOakesCollege, 
+  OuterHellerFamilyStudentHousing, 
+  OuterHellerCollegeEightPorter, 
+
+  InnerHellerKerrHall, 
+  InnerHellerKresgeCollege, 
+  InnerMcLaughlinScienceHill,
+  InnerMcLaughlinCollegeNineTenHealthCenter, 
+  InnerHagarBookstore, 
+  InnerHagarEastRemote, 
+  InnerHagarLowerQuarryRd, 
+  InnerCoolidgeHagar, 
+  InnerHighWesternDr, 
+  InnerHighBarnTheater,
+  InnerEmpireGradeArboretum, 
+  InnerHellerOakesCollege, 
+  InnerHellerCollegeEightPorter 
+
+  ]
+
+
+
 })
    
 .controller('feedCtrl', function($scope,$ionicLoading, $state, $http, BusService, innerOrOuter, whichMetroBus) {
@@ -47,9 +468,9 @@ var myDataPromise = loop_service.getData();
     $state.go('tabsController.metro_list')
   }
 
-$ionicLoading.show({
+  $ionicLoading.show({
 	template: "Getting bus information.."
-});
+  });
 
   $http.get("https://crossorigin.me/http://www.scmtd.com/en/routes/system-map/systemschedule/16/20161")
             .success(function(data) {
@@ -328,7 +749,7 @@ $ionicLoading.show({
             });
 
 })
-   .controller('feed_listCtrl', function($scope, innerOrOuter) {
+.controller('feed_listCtrl', function($scope, innerOrOuter) {
     $scope.title = "Bus Schedule -- Inner Loop";
     if(innerOrOuter.get_var() == 0){
     //  console.log("We're in the inner loop");
@@ -385,12 +806,12 @@ $ionicLoading.show({
 
 })
 
-.controller('mapCtrl', function($scope, $state ,$cordovaGeolocation) {
+.controller('mapCtrl', function($scope, $state ,$cordovaGeolocation,$ionicLoading) {
 //  console.log("test");
    var options = {timeout: 10000, enableHighAccuracy: true};
 
+
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
-    
     var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
     var mapOptions = {
