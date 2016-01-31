@@ -835,7 +835,7 @@ var bus_stops = [
 
 })
    .controller('metro_listCtrl', function($scope, whichMetroBus, BusService) {
-    $scope.title = "Bus Schedule -- Metro Bus 15";
+    $scope.title = "Metro Bus 15";
     $scope.master_list = [];
     $scope.master_stops = [];
     var tmp_list = [];
@@ -843,23 +843,23 @@ var bus_stops = [
 
     if(whichMetroBus.get_var() == 0){
       
-      $scope.title = "Bus Schedule -- Metro Bus 15";
+      $scope.title = "Metro Bus 15";
       tmp_list = BusService.get_bus_15();
       tmp_stops = BusService.get_stops_15();
     }else if(whichMetroBus.get_var() == 1){
-      $scope.title = "Bus Schedule -- Metro Bus 16";
+      $scope.title = "Metro Bus 16";
       tmp_list = BusService.get_bus_16();
       tmp_stops = BusService.get_stops_16();
     }else if(whichMetroBus.get_var() == 2){
-      $scope.title = "Bus Schedule -- Metro Bus 10";
+      $scope.title = "Metro Bus 10";
       tmp_list = BusService.get_bus_10();
       tmp_stops = BusService.get_stops_10();
     }else if(whichMetroBus.get_var() == 3){
-      $scope.title = "Bus Schedule -- Metro Bus 19";
+      $scope.title = "Metro Bus 19";
       tmp_list = BusService.get_bus_19();
       tmp_stops= BusService.get_stops_19();
     }else{
-      $scope.title = "Bus Schedule -- Metro Bus 20";
+      $scope.title = "Metro Bus 20";
       tmp_list = BusService.get_bus_20();
       tmp_stops = BusService.get_stops_20();
 
@@ -917,7 +917,7 @@ var bus_stops = [
       
 
       var infoWindow = new google.maps.InfoWindow({
-          content: "I am here."
+          content: "You are here."
       });
 
       google.maps.event.addListener(marker, 'click', function () {

@@ -1,20 +1,21 @@
 <ion-view title="{{title}}">
     <ion-content overflow-scroll="true" padding="true" class="has-header">
-     
-<center>
+
+<ion-scroll zooming="true" direction="xy" style="width: 500px; height: 500px">
+  <div><center>
        <div class="row" >
 
-  <div class="col" ng-repeat="value in master_stops track by $index">
+  <div class="col-50" ng-repeat="value in master_stops track by $index">
 
-  	<ion-list>
-  	
+    <ion-list>
+    
        <a class="item"> {{master_stops[$index]}}</a>
 
 
        <div class="row-30" ng-repeat="row in master_list">
 
-       	    <a class="item ">  {{master_list[$index][$parent.$index+1]}} </a>
-       	
+            <a class="item ">  {{master_list[$index][$parent.$index+1]}} </a>
+        
        </div>
 
   </ion-list>
@@ -22,6 +23,9 @@
   </div>
 
 </div>
-</center>
+</center></div>
+ </ion-scroll>
+
+
     </ion-content>
 </ion-view>

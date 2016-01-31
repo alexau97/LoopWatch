@@ -1,10 +1,9 @@
 <ion-view title="Bus Schedule">
     <ion-content overflow-scroll="true" padding="true" class="has-header">
-        <button class="button  button-dark "><span class="metro1" >Choose your location </span></button>
+     <button ng-click="openModal()" class="button button-stable button-block ">Choose your location</button>
         <div class="list card">
             <div class="loop">&nbspLoop</div>
             <div class="item item-body class1">
-               
                 <h2>An <strong>inner</strong> loop is <strong id="inner_id"> </strong> stops away from you. </h2>
                 <h2> An <strong>outer</strong> loop is <strong id="outer_id"></strong> stops away from you.</h2>
                <!-- <div class = "smallText">
