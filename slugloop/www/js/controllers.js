@@ -15,7 +15,7 @@ var myDataPromise = loop_service.getData();
    console.log($scope.data)
 })
    
-.controller('feedCtrl', function($scope,$state, $http, BusService, innerOrOuter, whichMetroBus) {
+.controller('feedCtrl', function($scope,$ionicLoading, $state, $http, BusService, innerOrOuter, whichMetroBus) {
 	$scope.to_inner_loop = function(){
     innerOrOuter.set_var(0); // 0 is inner loop
    //		console.log("Hello WOrld");
@@ -47,7 +47,9 @@ var myDataPromise = loop_service.getData();
     $state.go('tabsController.metro_list')
   }
 
-
+$ionicLoading.show({
+	template: "Getting bus information.."
+});
 
   $http.get("https://crossorigin.me/http://www.scmtd.com/en/routes/system-map/systemschedule/16/20161")
             .success(function(data) {
@@ -71,7 +73,7 @@ var myDataPromise = loop_service.getData();
                bus_stops_final.push(bus_stops_corner_case[1])
                console.log("Putting shit into the stops");
                BusService.set_stops_16(bus_stops_final);
-
+               $ionicLoading.hide();
 
                for(var j = 2; j < bus_time.length; j++){
                var string = bus_time[j].getElementsByTagName("td");

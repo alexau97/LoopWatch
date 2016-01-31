@@ -1,10 +1,6 @@
 <ion-view title="{{title}}">
     <ion-content overflow-scroll="true" padding="true" class="has-header">
-       <div class="button-bar">
-  <a class="button" ng-click="towards_campus()">Towards Campus</a>
-  <a class="button" ng-click="off_campus()">Off Campus</a>
-
-</div>
+     
 <center>
        <div class="row" >
 
@@ -15,7 +11,7 @@
        <a class="item"> {{master_stops[$index]}}</a>
 
 
-       <div class="row" ng-repeat="row in master_list">
+       <div class="row-30" ng-repeat="row in master_list">
 
        	    <a class="item ">  {{master_list[$index][$parent.$index+1]}} </a>
        	
