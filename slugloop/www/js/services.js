@@ -3,6 +3,30 @@ angular.module('app.services', [])
 .factory('BlankFactory', [function(){
 
 }])
+.factory('loop_service', function($http) {
+
+    var getData = function() {
+
+    	return    $.ajax({
+                    url: "http://skynet.soe.ucsc.edu/bts/coord2.jsonp",
+                    //url: "js/bus_location.json",
+                    dataType: "jsonp",
+                    jsonp: !0,
+                    cache: !1,
+                    jsonpCallback: "parseResponse",
+                    success: function(f) { 
+
+                  
+                    	
+                    	return f;
+                    }
+
+})
+
+     
+    };
+    return { getData: getData };
+})
 
 .service('innerOrOuter',[function(){
   var inOrOut;
@@ -16,6 +40,18 @@ angular.module('app.services', [])
   }
 }])
 
+.service('loop_gps', [function(){
+  var bus_loop; 
+
+  return{
+  	get_bus: function(){
+  		return bus_loop;
+  	},
+  	set_bus: function(value){
+  		bus_loop = value;
+  	}
+  }
+}])
 .service('whichMetroBus', [function(){
   var whichMetro;
   return {
