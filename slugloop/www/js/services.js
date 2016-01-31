@@ -3,6 +3,31 @@ angular.module('app.services', [])
 .factory('BlankFactory', [function(){
 
 }])
+
+.service('innerOrOuter',[function(){
+  var inOrOut;
+  return {
+    get_var: function(){
+      return inOrOut;
+    },
+    set_var: function(value){
+      inOrOut = value;
+    }
+  }
+}])
+
+.service('whichMetroBus', [function(){
+  var whichMetro;
+  return {
+    get_var: function(){
+      return whichMetro;
+    },
+    set_var: function(value){
+      whichMetro = value;
+    }
+  }
+}])
+
 .service('BusService',[function(){
 
   var row_16 = [];
