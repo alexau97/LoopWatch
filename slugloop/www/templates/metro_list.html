@@ -1,11 +1,31 @@
 <ion-view title="{{title}}">
     <ion-content overflow-scroll="true" padding="true" class="has-header">
-       
-       <ion-list>
-                
-          
-                 
-               
-      </ion-list>
+       <div class="button-bar">
+  <a class="button" ng-click="towards_campus()">Towards Campus</a>
+  <a class="button" ng-click="off_campus()">Off Campus</a>
+
+</div>
+<center>
+       <div class="row" >
+
+  <div class="col" ng-repeat="value in master_stops track by $index">
+
+  	<ion-list>
+  	
+       <a class="item"> {{master_stops[$index]}}</a>
+
+
+       <div class="row" ng-repeat="row in master_list">
+
+       	    <a class="item ">  {{master_list[$index][$parent.$index+1]}} </a>
+       	
+       </div>
+
+  </ion-list>
+
+  </div>
+
+</div>
+</center>
     </ion-content>
 </ion-view>
