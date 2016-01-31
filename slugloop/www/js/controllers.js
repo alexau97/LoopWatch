@@ -231,6 +231,8 @@ outer_id.innerHTML = String(out_min);
    	}
   }else{
   	console.log("there are no buses in service ]: ");
+    inner_clnt.innerHTML = String(0)
+    outer_clnt.innerHTML = String(0)
   }
 
    })
