@@ -33,7 +33,7 @@ Our application uses AngularJS’ ‘$http’ requests for the GET request, and 
 
 ### Where to start
 
-All of our stuff will be modified under SLUGLOOP/www/ the css, img, js, lib, and templates will have our relevent stuff. 
+All of our stuff will be modified under slugloop/www/ the css, img, js, lib, and templates will have our relevent stuff. 
 
 ### How to start
 
