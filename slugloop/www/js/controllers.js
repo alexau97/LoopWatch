@@ -83,8 +83,98 @@ angular.module('app.controllers', [])
                 defer.reject('could not find someFile.json');
             });
 })
-   
-.controller('mapCtrl', function($scope) {
-
+//29 buttons
+.controller('locationCtrl', function($scope) {
+$scope.o_mclaughlin = function(){
+  console.log("clicked on outer mclaughlin");
+ }
+$scope.o_kresge = function(){
+  console.log("clicked on outer kresge");
+ }
+$scope.nine_ten = function(){
+  console.log("clicked on 9/10");
+ }
+$scope.crown = function(){
+  console.log("clicked on crown");
+ }
+$scope.bookstore = function(){
+  console.log("clicked on bookstore");
+ }
+$scope.f_east = function(){
+  console.log("clicked on field house east");
+ }
+$scope.e_remote = function(){
+  console.log("clicked on east remote");
+ }
+$scope.l_quarry = function(){
+  console.log("clicked on lower quarry");
+ }
+$scope.o_coolidge = function(){
+  console.log("clicked on outer coolidge");
+ }
+$scope.o_coolidgemain = function(){
+  console.log("clicked on outer coolidge main");
+ }
+$scope.o_highW = function(){
+  console.log("clicked on outer high west");
+ }
+$scope.o_empire = function(){
+  console.log("clicked on outer empire grade");
+ }
+$scope.o_emAr = function(){
+  console.log("clicked on outer empire and arboretem");
+ }
+$scope.l_quarry = function(){
+  console.log("clicked on lower quarry");
+ }
+$scope.o_hellerOakes = function(){
+  console.log("clicked on outer heller and oakes");
+ }
+$scope.o_hellerFam = function(){
+  console.log("clicked on outer heller and family student housing");
+ }
+$scope.o_hellerEight = function(){
+  console.log("clicked on outer heller and college 8");
+ }
+$scope.i_hellerKerr = function(){
+  console.log("clicked on inner heller and kerr hall");
+ }
+$scope.i_hellerKresge = function(){
+  console.log("clicked on inner heller and Kresge");
+ }
+$scope.i_mcHill = function(){
+  console.log("clicked on inner mclaughlin and science hill");
+ }
+$scope.i_McNine = function(){
+  console.log("clicked on inner mclaughlin and college 9/10");
+ }
+$scope.i_hagarBook = function(){
+  console.log("clicked on inner hagar and bookstore");
+ }
+$scope.i_hagarEast = function(){
+  console.log("clicked on inner hagar and east remote");
+ }
+$scope.i_hagarQ = function(){
+  console.log("clicked on inner hagar and quarry");
+ }
+$scope.i_coolidgeH = function(){
+  console.log("clicked on inner hagar and coolidge");
+ }
+$scope.i_highW = function(){
+  console.log("clicked on inner hagar and western");
+ }
+$scope.i_highBarn = function(){
+  console.log("clicked on inner high and barn theater");
+ }
+$scope.i_empireAr = function(){
+  console.log("clicked on inner empire grade and arboreteum");
+ }
+$scope.i_hellerOakes = function(){
+  console.log("clicked on inner heller and oakes");
+ }
+$scope.i_hellerEight = function(){
+  console.log("clicked on inner heller and eight");
+ }
 })
-    
+
+
