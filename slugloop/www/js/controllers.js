@@ -38,6 +38,8 @@ angular.module('app.controllers', [])
 	$scope.bus_lng = [];
 	$scope.bus_attr = []; 
 	$scope.bus_cnt = 0;
+	$scope.inner_cnt = 0;
+	$scope.outer_cnt =0;
 	$scope.inner_min = String(0);
 	var inner_id = document.getElementById( "inner_id" );
 	inner_id.innerHTML = " X "
