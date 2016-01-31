@@ -34,6 +34,15 @@ angular.module('app.routes', [])
       }
     })
         
+      .state('tabsController.feed_list', {
+      url: '/feed/list',
+      views: {
+        'tab2': {
+          templateUrl: 'templates/feed_list.html',
+          controller: 'feed_listCtrl'
+        }
+      }
+    })
       
     
       
@@ -60,6 +69,6 @@ angular.module('app.routes', [])
     ;
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/page1/loop');
+  $urlRouterProvider.otherwise('/loop');
 
 });

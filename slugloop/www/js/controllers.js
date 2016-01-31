@@ -6,8 +6,11 @@ angular.module('app.controllers', [])
 
 })
    
-.controller('feedCtrl', function($scope, $http, BusService) {
-
+.controller('feedCtrl', function($scope,$state, $http, BusService) {
+	$scope.to_inner_loop = function(){
+		console.log("Hello WOrld");
+		$state.go('tabsController.feed_list')
+	}
 
   $http.get("https://crossorigin.me/http://www.scmtd.com/en/routes/system-map/systemschedule/16/20161")
             .success(function(data) {
@@ -235,7 +238,9 @@ angular.module('app.controllers', [])
             });
 
 })
-   
+   .controller('feed_listCtrl', function($scope) {
+
+})
 
 .controller('mapCtrl', function($scope, $state ,$cordovaGeolocation) {
   console.log("test");
