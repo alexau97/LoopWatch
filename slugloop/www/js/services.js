@@ -8,8 +8,8 @@ angular.module('app.services', [])
     var getData = function() {
 
     	return    $.ajax({
-                    url: "http://skynet.soe.ucsc.edu/bts/coord2.jsonp",
-                    //url: "js/bus_location.json",
+                    //url: "http://skynet.soe.ucsc.edu/bts/coord2.jsonp",
+                    url: "js/bus_location.json",
                     dataType: "jsonp",
                     jsonp: !0,
                     cache: !1,
