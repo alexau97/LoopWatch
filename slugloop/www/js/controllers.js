@@ -3,7 +3,27 @@ angular.module('app.controllers', [])
 
   
 .controller('loopCtrl', function($scope) {
+get_buses = function(){
+   $.ajax({
+                    //url: "http://skynet.soe.ucsc.edu/bts/coord2.jsonp",
+                    url: "js/bus_location.json",
+                    dataType: "jsonp",
+                    jsonp: !0,
+                    cache: !1,
+                    jsonpCallback: "parseResponse",
+                    success: function(f) { 
 
+                    	console.log(f);
+                    	return f;
+                    }
+
+})
+
+}
+
+  var a = get_buses();
+   console.log("hi")
+   console.log(a)
 })
    
 .controller('feedCtrl', function($scope,$state, $http, BusService, innerOrOuter, whichMetroBus) {
