@@ -817,7 +817,7 @@ var bus_stops = [
 
     var mapOptions = {
       center: latLng,
-      zoom: 15,
+      zoom: 16,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
@@ -831,25 +831,340 @@ var bus_stops = [
         url: 'js/OuterBusStop.png',
       };
 
-      //Outer Science Hill Bus Stop Marker
+      var image1 = {
+        url: 'js/InnerBusStop.png'
+      }
 
-      var marker = new google.maps.Marker({
+      //OuterMcLaughlin & Science Hill 1
+
+      var marker1 = new google.maps.Marker({
           position: {lat: 36.999935, lng: -122.062135},
           map:$scope.map,
           icon: image
       });      
 
-      
+      //OuterHeller & Kresge College 2
 
-      var infoWindow = new google.maps.InfoWindow({
-          content: "I am here."
+      var marker2 = new google.maps.Marker({
+          position: {lat: 36.999241, lng: -122.064452},
+          map:$scope.map,
+          icon: image
+      });     
+
+      //OuterMcLaughlin College Nine Ten Health Center 3
+
+      var marker3 = new google.maps.Marker({
+          position: {lat: 36.999856, lng: -122.058251},
+          map:$scope.map,
+          icon: image
+      });     
+
+
+      //Outer McLaughlin Crown College 4
+
+      var marker4 = new google.maps.Marker({
+          position: {lat: 36.998954, lng: -122.055286},
+          map:$scope.map,
+          icon: image
+      });    
+
+      //Outer Hager BookStore Stevenson College  5
+
+      var marker5 = new google.maps.Marker({
+          position: {lat: 36.997219, lng: -122.055263},
+          map:$scope.map,
+          icon: image
+      });    
+
+      //Outer Hagar Field House East 6
+
+      var marker6 = new google.maps.Marker({
+          position: {lat: 36.994269, lng: -122.055624},
+          map:$scope.map,
+          icon: image
       });
 
-      google.maps.event.addListener(marker, 'click', function () {
-          infoWindow.open($scope.map, marker);
+      //Outer Hager East Remote 7
+
+      var marker7 = new google.maps.Marker({
+          position: {lat: 36.991304, lng: -122.054784},
+          map:$scope.map,
+          icon: image
+      });   
+
+      //Outer Hagar Lower Quarry Road 8
+
+      var marker8 = new google.maps.Marker({
+          position: {lat: 36.985984, lng: -122.053706},
+          map:$scope.map,
+          icon: image
       });
 
+      //Outer Coolidge Hager 9
+
+      var marker9 = new google.maps.Marker({
+          position: {lat: 36.981484, lng: -122.051999},
+          map:$scope.map,
+          icon: image
+      });
+
+      //Outer Coolidge Main Entrance 10
+
+      var marker10 = new google.maps.Marker({
+          position: {lat: 36.977468, lng: -122.053582},
+          map:$scope.map,
+          icon: image
+      });
+
+      //Outer High Western Drive 11
+
+      var marker11 = new google.maps.Marker({
+          position: {lat: 36.978694, lng: -122.057741},
+          map:$scope.map,
+          icon: image
+      });
+
+      // Outer Empire Grade Tosca Terrace 12
+
+      var marker12 = new google.maps.Marker({
+          position: {lat: 36.97984, lng: -122.057741},
+          map:$scope.map,
+          icon: image
+      });
+
+      // Outer Empire Grade Arboretum 13
+
+      var marker13 = new google.maps.Marker({
+          position: {lat: 36.983755, lng: -122.064933},
+          map:$scope.map,
+          icon: image
+      });
+
+      // Outer Heller Oakes College 14
+
+      var marker14 = new google.maps.Marker({
+          position: {lat: 36.989899, lng: -122.067078},
+          map:$scope.map,
+          icon: image
+      });
+
+      //Outer Heller Family Student Housing 15
+
+      var marker15 = new google.maps.Marker({
+          position: {lat: 36.991905, lng: -122.066699},
+          map:$scope.map,
+          icon: image
+      });
+
+      //Outer Heller College Eight Porter 16
+
+      var marker16 = new google.maps.Marker({
+          position: {lat: 36.992896, lng: -122.065127},
+          map:$scope.map,
+          icon: image
+      });
+
+
+      //InnerHellerKerrHall 1
+
+      var marker17 = new google.maps.Marker({
+          position: {lat: 36.996805, lng: -122.063655},
+          map:$scope.map,
+          icon: image1
+      });      
+
+      //InnerHellerKresge College 2
+
+      var marker18 = new google.maps.Marker({
+          position: {lat: 36.99911, lng: -122.064476},
+          map:$scope.map,
+          icon: image1
+      });     
+
+      //InnerMcLaughlinScienceHill 3
+      //Changed lattitude
+      var marker19 = new google.maps.Marker({
+          position: {lat: 36.999770, lng: -122.062135},
+          map:$scope.map,
+          icon: image1
+      });     
+
+
+      //InnerMcLaughlinCollegeNineTenHealthCenter 4
+      //adjusted lattitude
+      var marker20 = new google.maps.Marker({
+          position: {lat: 36.999745, lng: -122.05824},
+          map:$scope.map,
+          icon: image1
+      });    
+
+      //InnerHagarBookStore  5
+
+      var marker21 = new google.maps.Marker({
+          position: {lat: 36.996823, lng: -122.055366},
+          map:$scope.map,
+          icon: image1
+      });    
+
+      //InnerHagarEastRemote 6
+
+      var marker22 = new google.maps.Marker({
+          position: {lat: 36.991469, lng: -122.054875},
+          map:$scope.map,
+          icon: image1
+      });
+
+      //InnerHagarLowerQuarryRd 7
+
+      var marker23 = new google.maps.Marker({
+          position: {lat: 36.985671, lng: -122.053489},
+          map:$scope.map,
+          icon: image1
+      });   
+
+      //InnerCoolidgeHagar 8
+
+      var marker24 = new google.maps.Marker({
+          position: {lat: 36.981457, lng: -122.052044},
+          map:$scope.map,
+          icon: image1
+      });
+
+      //InnerHighWesternDr 9
+
+      var marker25 = new google.maps.Marker({
+          position: {lat: 36.975641, lng: -122.057663},
+          map:$scope.map,
+          icon: image1
+      });
+
+      //InnerHighBarnTheater 10
+
+      var marker26 = new google.maps.Marker({
+          position: {lat: 36.977237, lng: -122.054173},
+          map:$scope.map,
+          icon: image1
+      });
+
+      //InnerEmpireGradeArboretum 11
+
+      var marker27 = new google.maps.Marker({
+          position: {lat: 36.982496, lng: -122.057741},
+          map:$scope.map,
+          icon: image1
+      });
+
+      //InnerHellerOakesCollege 12
+
+      var marker28 = new google.maps.Marker({
+          position: {lat: 36.99052, lng: -122.066254},
+          map:$scope.map,
+          icon: image1
+      });
+
+      //InnerHellerCollegeEightPorter 13
+
+      var marker29 = new google.maps.Marker({
+          position: {lat: 36.992894, lng: -122.064712},
+          map:$scope.map,
+          icon: image1
+      });
+
+/*
+      for (i=1; i<15; i++)
+      {
+        var marker = new google.maps.Marker({
+          position: {lat: (bus_stops[i])[0], lng: (bus_stops[i])[1]},
+          map:$scope.map,
+          icon: image
+         }); 
+        
+
+      }
+  */    
+
+      var infoWindow1 = new google.maps.InfoWindow({
+          content: "Outer McLaughlin & Science Hill"
+      });
+
+      google.maps.event.addListener(marker1, 'click', function () {
+          infoWindow1.open($scope.map, marker1);
+      });
+
+      var infoWindow2 = new google.maps.InfoWindow({
+          content: "Outer Heller & Kresge College"
+      });
+
+      google.maps.event.addListener(marker2, 'click', function () {
+          infoWindow2.open($scope.map, marker2);
+      });
+
+      var infoWindow3 = new google.maps.InfoWindow({
+          content: "Outer McLaughlin & College 9 & 10 - Health Center"
+      });
+
+      google.maps.event.addListener(marker3, 'click', function () {
+          infoWindow3.open($scope.map, marker3);
+      });
+
+      var infoWindow4 = new google.maps.InfoWindow({
+          content: "Outer McLaughlin & Crown College"
+      });
+
+      google.maps.event.addListener(marker4, 'click', function () {
+          infoWindow4.open($scope.map, marker4);
+      });
+
+
+      var infoWindow5 = new google.maps.InfoWindow({
+          content: "Outer Hager & Bookstore & Stevenson College"
+      });
+
+      google.maps.event.addListener(marker5, 'click', function () {
+          infoWindow5.open($scope.map, marker5);
+      });
+
+      var infoWindow6 = new google.maps.InfoWindow({
+          content: "Outer Hager & Field House East"
+      });
+
+      google.maps.event.addListener(marker6, 'click', function () {
+          infoWindow6.open($scope.map, marker6);
+      });
+
+      var infoWindow7 = new google.maps.InfoWindow({
+          content: "Outer Hager & East Remote"
+      });
+
+      google.maps.event.addListener(marker7, 'click', function () {
+          infoWindow7.open($scope.map, marker7);
+      });
+
+      var infoWindow8 = new google.maps.InfoWindow({
+          content: "Outer Hager & Lower Quarry Road"
+      });
+
+      google.maps.event.addListener(marker8, 'click', function () {
+          infoWindow8.open($scope.map, marker8);
+      });
+
+      var infoWindow9 = new google.maps.InfoWindow({
+          content: "Outer Coolidge & Hagar"
+      });
+
+      google.maps.event.addListener(marker9, 'click', function () {
+          infoWindow9.open($scope.map, marker9);
+      });
+
+      var infoWindow10 = new google.maps.InfoWindow({
+          content: "Outer Coolidge & Main Entrance"
+      });
+
+      google.maps.event.addListener(marker10, 'click', function () {
+          infoWindow10.open($scope.map, marker10);
+      });
     });
+
 
   }, function(error){
   //  console.log("Could not get location");
