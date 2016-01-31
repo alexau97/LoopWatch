@@ -46,7 +46,12 @@ angular.module('app.controllers', [])
 
 	var outer_id = document.getElementById("outer_id");
 	outer_id.innerHTML = " Y "
+
+	var inner_clnt = document.getElementById("inner_count");
 	
+	
+	var outer_clnt = document.getElementById("outer_count");
+
 	var in_min = 100;
 	var out_min = 100;
 	$scope.outer_min = String(0);
@@ -126,7 +131,8 @@ var inner_LL = ["InnerHellerKerrHall",
 
 
    	if($scope.bus_attr[i] == "inner"){
-   		console.log("INNER!!!")
+   		$scope.inner_cnt++;
+   		inner_clnt.innerHTML = $scope.inner_cnt
            //GETS THE INDEX
    			for(var j = 0; j < outer_LL.length; j++){
    				//console.log(bus_tmp)
@@ -172,7 +178,9 @@ var inner_LL = ["InnerHellerKerrHall",
    		} 
 
    		if($scope.bus_attr[i] == "outer"){
-   			console.log("outer!!!")
+   			$scope.outer_cnt++;
+   			
+	outer_clnt.innerHTML = $scope.outer_cnt
            //GETS THE INDEX
    			for(var j = 0; j < outer_LL.length; j++){
    				//console.log(bus_tmp)
