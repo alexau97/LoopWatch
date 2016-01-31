@@ -2,28 +2,17 @@ angular.module('app.controllers', [])
 
 
   
-.controller('loopCtrl', function($scope) {
-get_buses = function(){
-   $.ajax({
-                    //url: "http://skynet.soe.ucsc.edu/bts/coord2.jsonp",
-                    url: "js/bus_location.json",
-                    dataType: "jsonp",
-                    jsonp: !0,
-                    cache: !1,
-                    jsonpCallback: "parseResponse",
-                    success: function(f) { 
-
-                   // 	console.log(f);
-                    	return f;
-                    }
-
-})
-
-}
-
-  var a = get_buses();
+.controller('loopCtrl', function($scope,loop_service) {
+	$scope.data;
+var myDataPromise = loop_service.getData();
+    myDataPromise.then(function(result) {  // this is only run after $http completes
+       $scope.data = result;
+       console.log("printing results")
+       console.log(result);
+       
+    });
  //  console.log("hi")
- //  console.log(a)
+   console.log($scope.data)
 })
    
 .controller('feedCtrl', function($scope,$state, $http, BusService, innerOrOuter, whichMetroBus) {
