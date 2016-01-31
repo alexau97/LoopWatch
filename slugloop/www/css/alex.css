@@ -1,0 +1,43 @@
+.pane {
+    background-color: #BFBFBF;
+}
+
+.title.title-center.header-item {
+	font-family: Steiner;
+	font-weight: light;
+	font-size: 200%;
+	color: white;
+    background-color: #949494;
+    margin: 0px;
+}
+
+.smallText p{
+	font-family: Lado;
+	font-weight: regular;
+	font-size: 00%;	
+}
+
+.custom{
+	font-family: Steiner;
+	font-weight: light;
+	font-size: 200%;	
+}
+
+.loop{
+	font-family: Jura;
+	font-weight: bold;
+	font-size: 230%;
+	margin: 10px;
+}
+
+.metro{
+	font-family: Jura;
+	font-weight: bold;
+	font-size: 230%;
+	margin: 10px;
+}
+
+.class1 h2{
+	font-family: Jura;
+	font-size: 150%;
+}
