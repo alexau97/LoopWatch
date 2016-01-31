@@ -9,7 +9,12 @@ angular.module('app.routes', [])
   $stateProvider
     
       
-        
+    .state('tabsController', {
+      url: '/app',
+      abstract:true,
+      templateUrl: 'templates/tabsController.html'
+    })
+      
     .state('tabsController.loop', {
       url: '/loop',
       views: {
@@ -22,8 +27,6 @@ angular.module('app.routes', [])
         
       
     
-      
-        
     .state('tabsController.feed', {
       url: '/feed',
       views: {
@@ -60,15 +63,10 @@ angular.module('app.routes', [])
       
     
       
-    .state('tabsController', {
-      url: '/page1',
-      abstract:true,
-      templateUrl: 'templates/tabsController.html'
-    })
-      
+
     ;
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/loop');
+  $urlRouterProvider.otherwise('/app/loop');
 
 });
