@@ -16,6 +16,10 @@ This is a hybrid web application written entirely in javascript for HackUCSC at 
 
 Our application uses AngularJS’ ‘$http’ requests for the GET request, and we’re using crossorigin.me as a cors proxy for the GET request, in order to get around the CORs issue.
 
+You can view a demo here:
+
+https://www.youtube.com/watch?v=IWo0gBVGLQo&feature=youtu.be
+
 
 
 ##screenshots 
